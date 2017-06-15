@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 
  *	FeignClient(name="service服务名",configuration = FeignConfiguration.class)
  *	需要更改feign的配置则需指定configuration，服务配置类
- *	
+ *	fallback配置断路器
  *
  */
 //@FeignClient(name="cloud-test",configuration = FeignConfiguration.class)
-@FeignClient(name="cloud-test")
+@FeignClient(name="cloud-test",fallback=TestServiceHystris.class)
 public interface TestService {
 
 	@RequestMapping(value="/hello", method = RequestMethod.GET)
